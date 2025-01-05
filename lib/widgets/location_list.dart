@@ -16,6 +16,8 @@ class LocationList extends StatelessWidget {
     'West Cliff',
   ];
 
+   LocationList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

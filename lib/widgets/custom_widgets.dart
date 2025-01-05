@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomWidgets extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final bool obscureText;
 
-  CustomTextField({
+  const CustomWidgets({super.key, 
     required this.hintText,
     required this.icon,
-    this.obscureText = false,
+    this.obscureText = false, required String label,
   });
 
   @override
@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  CustomButton({
+  const CustomButton({super.key, 
     required this.text,
     required this.onPressed,
   });

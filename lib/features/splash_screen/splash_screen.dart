@@ -3,6 +3,8 @@ import 'package:harika_2106/features/location/location_view.dart';
 import 'package:harika_2106/utils/logo_widget.dart';
 
 class SplashViewScreen extends StatefulWidget {
+  const SplashViewScreen({super.key});
+
   @override
   _SplashViewScreenState createState() => _SplashViewScreenState();
 }

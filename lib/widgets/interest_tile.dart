@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:harika_2106/utils/icon_list.dart';
 
 class InterestTile extends StatelessWidget {
   final String interest;
+  final List<String> imagePaths;
   final bool isSelected;
   final ValueChanged<bool?> onChanged;
 
   const InterestTile({
-    Key? key,
+    super.key,
     required this.interest,
+    required this.imagePaths,
     required this.isSelected,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,13 @@ class InterestTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: ListTile(
-        leading: Icon(IconWidget.getIcon(interest)),
+        leading: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: imagePaths.map((path) => Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: Image.asset(path, width: 40, height: 40), // Use each image path
+          )).toList(),
+        ),
         title: Text(interest),
         trailing: Checkbox(
           value: isSelected,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:harika_2106/features/create_account/create_account.dart';
-import 'package:harika_2106/features/sign_in/sign_in_screen.dart';
-import 'package:harika_2106/utils/image_constants.dart';
 import 'package:harika_2106/widgets/interest_tile.dart';
-import 'package:harika_2106/routes/routes_constants.dart';
-
 
 class InterestsScreen extends StatefulWidget {
+  const InterestsScreen({super.key});
+
   @override
   _InterestsScreenState createState() => _InterestsScreenState();
 }
@@ -21,18 +19,18 @@ class _InterestsScreenState extends State<InterestsScreen> {
     'Wine & Dine': false,
   };
 
+  Map<String, List<String>> interestImages = {
+    'Music': ['assets/music.png'],
+    'Activism': ['assets/activism.png'],
+    'Business': ['assets/business.png'],
+    'Movies & TV': ['assets/movies.png'],
+    'Art & Design': ['assets/artdesign.png'],
+    'Wine & Dine': ['assets/winedine.png'],
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: Text('Interests'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -48,6 +46,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                 children: interests.keys.map((String key) {
                   return InterestTile(
                     interest: key,
+                    imagePaths: interestImages[key]!,
                     isSelected: interests[key]!,
                     onChanged: (bool? value) {
                       setState(() {
@@ -63,7 +62,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CreateAccount()), // Navigate to SignInScreen
+                  MaterialPageRoute(builder: (context) => CreateAccount()), // Navigate to CreateAccount
                 );
               },
               style: ElevatedButton.styleFrom(
